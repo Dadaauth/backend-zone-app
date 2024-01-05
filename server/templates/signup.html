@@ -1,0 +1,131 @@
+<!-- create a signup page. Make it beutiful enough to be deployed online and add as much css style as you can. Let the sign up page take a first name, last name, email, phone number, profile picture, date of birth and password. The theme color of the page should be blue and white but use a variety of colors. Backend zone is the name of my app let it be shown in a good font. Style the input form where the user will click to upload an image.  Let there be even spaces and padding betwen all components. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="password"],
+        .form-group input[type="file"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group input[type="file"] {
+            padding: 5px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Signup for Backend Zone</h1>
+        <form action="/signup" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first_name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last_name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone_number" required>
+            </div>
+            <div class="form-group">
+                <label for="profile-picture">Profile Picture</label>
+                <input type="file" id="profile-picture" name="profile_picture" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm_password" required oninput="validatePassword()">
+                <span id="password-error" style="color: red;"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+            var errorElement = document.getElementById("password-error");
+
+            if (password !== confirmPassword) {
+                errorElement.textContent = "Passwords do not match.";
+                return false;
+            } else {
+                errorElement.textContent = "";
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>
+
